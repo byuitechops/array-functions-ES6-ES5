@@ -16,23 +16,15 @@ const after = before
     }), {});
 
 //ES5
-
-//EXAMPLE NOT DONE YET
 function transform(before) {
-    return before.filter(function ({
-            key
-        }) {
-            return !/msrp/i.test(key);
+    return before.filter(function (keyValuePair) {
+            //Filter out the keyValuePair with the "msrp" key
+            return !/msrp/i.test(keyValuePair.key);
         })
-        .map(function ({
-            key,
-            value
-        }) {
-            return
-        })
-
-
-
+        .reduce(function (accumulator, keyValuePair) {
+            accumulator[keyValuePair.key] = keyValuePair.value;
+            return accumulator;
+        }, {});
 }
 
 //https://slides.com/meeple142/javascript-arrays-9#/12/6
@@ -55,5 +47,9 @@ startShape
 
 
 //ES5
-
-//EXAMPLE NOT DONE YET
+startShape
+    .reduce(function (newObject, keyValuePair) {
+        newObject[keyValuePair.key] =
+            newObject[keyValuePair.key] ? [].concat(newObject[keyValuePair.key]).concat([keyValuePair.value]) : keyValuePair.value;
+        return newObject;
+    }, {});
