@@ -110,57 +110,40 @@ console.log("Expected Output: 60", compose(myNumberFunctions, 7));
 
 
 
-//https://slides.com/meeple142/javascript-arrays-9#/11/11
+https: //slides.com/meeple142/javascript-arrays-9#/11/11
 
 
-//ES6
-const curry = (fn) => (
-    (...args) => (
-        fn.length <= 1 || args.length >= fn.length ?
-        fn(...args) :
-        args.reduce((acc, curr) => (
-            curry(acc.bind(null, curr)), fn))
-    )
-);
-
-//USE IF
-const curry = function (fn) {
-    return function (...args) {
-        return fn.length <= 1 || args.length >= fn.length ?
+    //ES6
+    const curry = (fn) => (
+        (...args) => (
+            fn.length <= 1 || args.length >= fn.length ?
             fn(...args) :
-            args.reduce(function (acc, curr) {
+            args.reduce((acc, curr) => (
+                curry(acc.bind(null, curr)), fn))
+        )
+    );
+
+//ES5
+const curry = function (fn) {
+    return function () {
+        if (fn.length <= 1 || arguments.length >= fn.length) {
+            return fn.apply(null, arguments);
+        } else {
+            return Array.prototype.reduce.call(arguments, function (acc, curr) {
                 return curry(acc.bind(null, curr));
             }, fn);
+        }
     }
 };
 
-hi(a, b, c, d, e)
-cHi = curry(hi);
-first2hi = cHi(1, 2);
-first2hi(3, 4, 5)
 
-
-const sum = x => y => x + y;
-// returns the number 3
-sum(2)(1);
-// returns a function y => 2 + y
-var add2 = sum(2);
-
-add2(12)
-
-//ES5
-function curry(fn) {
-    if (fn.length <= 1 || arguments.length >= fn.length) {
-        fn(arguments)
-    } else {
-        Array.prototype.reduce.call(arguments, function (acc, current) {
-            curry(acc.bind(null, current)), fn
-        });
-    }
-
-
-
+//Example of using the curry function
+var add = function (x, y, z) {
+    return x + y + z;
 }
+var addCurryMaker = curry(add);
+var xAndyAlreadyDefined = addCurryMaker(1, 2);
+console.log("Expected: 6: " + xAndyAlreadyDefined(3));
 
 
 //https://slides.com/meeple142/javascript-arrays-9#/11/12
@@ -174,4 +157,4 @@ const waterfall = (...promiseThunks) => (
 )
 
 //ES5
-//EXAMPLE NOT DONE YET
+//EXAMPLE NOT DONE PROBABLY NOT NEEDED BECAUSE THIS IS ABOUT PROMISES
