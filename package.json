@@ -1,0 +1,27 @@
+{
+  "name": "array-functions-es6-es5",
+  "version": "1.0.0",
+  "description": "This was a small project to convert code in a certain training from ES6 to ES5.",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byuitechops/array-functions-ES6-ES5.git"
+  },
+  "author": "Ryan Gewondjan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/byuitechops/array-functions-ES6-ES5/issues"
+  },
+  "homepage": "https://github.com/byuitechops/array-functions-ES6-ES5#readme",
+  "byui": {
+    "documentGeneratorVersion": "1.0.0",
+    "projectPurpose": "The purpose of this project was to ease the learning process by making it so new hires would not have to learn ES6 syntax and other concepts at the same time.",
+    "projectStakeholders": "Internal",
+    "projectRequirements": "Convert training code from ES6 to ES5",
+    "projectSize": "mini",
+    "timeDocumentationLastUpdated": "2019 January 25, 04:52 PM"
+  }
+}
